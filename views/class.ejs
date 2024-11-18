@@ -1,1 +1,84 @@
-<h1>class</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Schedule</title>
+    <link rel="stylesheet" href="/styles.css"> 
+    <style>
+        class-container {
+            display: flex;
+            /* flex-direction: column; */
+            gap: 20px; /* Space between each class box */
+        }
+
+        /* Styling for individual class boxes */
+        .class-box {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            gap: 20px; 
+        }
+        
+
+        /* Styling for the class image */
+        .class-image {
+            width: 400px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            margin-right: 15%;
+        }
+
+        /* Styling for the class details */
+        .class-details {
+            flex-grow: 1;
+        }   
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/"><h1>Welcome to Ontario Tech Gym</h1></a>
+        <nav>
+            <ul>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/class">Class</a></li>
+                <li><a href="/membership">Membership</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+
+            <h1><a href="/Login">Login</a></h1>
+        </nav>
+    </header>
+
+
+    <h1>Class Schedule</h1>
+
+    <div class="class-container">
+        <% if (classes.length > 0) { %>
+            <% classes.forEach((classItem) => { %>
+                <div class="class-box">
+                    <div class="class-image" style="background-image: url('<%= classItem.class_img %>');"></div>
+                    <div class="class-details">
+                        <h3><%= classItem.class_name %></h3>
+                        <p>From: <%= classItem.s_time %></p>
+                        <p>End: <%= classItem.e_time %></p>
+                        <p>Location: <%= classItem.location %></p>
+                        <p>Available Seats: <%= classItem.seats %></p>
+                    </div>
+                   
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No classes available.</p>
+        <% } %>
+    
+    </div>
+ 
+    
+</body>
+</html>

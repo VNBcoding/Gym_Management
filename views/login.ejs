@@ -6,14 +6,30 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/signup" method="post">
-        <label for="email">
-            <input type="text" id="email" name="email">
-        </label>
-        <label for="pass">
-            <input type="password">
-        </label>
-        <button type="submit"></button>
+    <header>
+        <a href="/"><h1>Welcome to Ontario Tech Gym</h1></a>
+        <nav>
+            <ul>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/class">Class</a></li>
+                <li><a href="/membership">Membership</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+
+            <h1><a href="/Login">Login</a></h1>
+        </nav>
+    </header>
+
+    <form action="login" method="post">
+        <label for="username"> Usernane :</label>
+            
+            <input type="text" name="username" value="">
+
+        <label for="pass"> Password:  </label>
+            <input type="password" name="password" value="">
+     
+        <button type="submit" value="submit"> submit</button>
     </form>
+    <a href="signup">Don't have a account?</a>
 </body>
 </html>
