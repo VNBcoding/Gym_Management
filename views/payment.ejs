@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Plan</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to your stylesheet -->
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+
+    <section class="payment-page">
+        <h1>Payment Details for <%= plan.plan_name %> Plan</h1>
+        <div class="plan-details">
+            <h2><%= plan.plan_name %></h2>
+            <p>Duration: <%= plan.duration %></p>
+            <p><strong>Price: $<%= plan.price %></strong></p>
+            <p><%= plan.description || 'No description available' %></p>
+        </div>
+
+        <h2>Enter Payment Information</h2>
+
+        <form action="/process-payment" method="POST">
+            <input type="hidden" name="plan_name" value="<%= plan.plan_name %>">
+            <input type="hidden" name="price" value="<%= plan.price %>">
+            
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" name="cardNumber" required>
+            </div>
+
+            <div class="form-group">
+                <label for="expiryDate">Expiry Date</label>
+                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" required>
+            </div>
+
+            <div class="form-group">
+                <p>Select Payment Type:</p>
+                <div class="radio-container">
+                    <input type="radio" id="credit" name="paymentType" value="Credit" required>
+                    <label for="credit">Credit Card</label>
+                </div>
+                <div class="radio-container">
+                    <input type="radio" id="debit" name="paymentType" value="Debit">
+                    <label for="debit">Debit Card</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="btn-submit">Pay Now</button>
+            </div>
+        </form>
+    </section> <!-- Fixed the missing closing tag here -->
+    
+    <%- include('partials/footer.ejs') %>
+   
+</body>
+</html>

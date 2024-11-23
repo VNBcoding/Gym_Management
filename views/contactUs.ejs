@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS -->
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+
+    <section class="contact-page">
+        <h1>Contact Us</h1>
+        <p>If you have any questions or need assistance, feel free to send us a message!</p>
+
+        <form id="contact-form" class="contact-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Enter your message" rows="5" required></textarea>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+        <p id="response-message" style="color: green; display: none;">Message sent successfully!</p>
+    </section>
+
+    <script> 
+      
+        // Handle form submission via AJAX
+        document.getElementById('contact-form').addEventListener('submit', async function (event) {
+            event.preventDefault(); // Prevent the default form submission
+           
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            try {
+   
+            const response = await fetch('/contactUs', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, message })
+            });
+
+            if (response.ok) {
+                // Log success message to the console
+                console.log("Message sent");
+
+                // Display success message and clear the form
+                document.getElementById('response-message').style.display = 'block';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            } else {
+                console.log('Failed to send the message. Please try again.');
+            }
+            } catch (error) {
+            console.error('Error:', error);
+            console.log('An error occurred. Please try again.');
+            }
+
+        });
+    </script>
+</body>
+</html>

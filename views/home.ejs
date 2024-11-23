@@ -8,24 +8,15 @@
 
 </head>
 <body>
-    <header>
-        <a href="/"><h1>Welcome to Ontario Tech Gym</h1></a>
-        <nav>
-            <ul>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/class">Class</a></li>
-                <li><a href="/membership">Membership</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-
-            <h1><a href="/Login">Login</a></h1>
-        </nav>
-    </header>
-
+    
+    <%- include('partials/header') %>
+    <% if (success) { %>
     <section id="about">
-        <h2>About Us</h2>
-        <p>FitLife Gym is your go-to place for fitness, health, and well-being. Join us to achieve your fitness goals!</p>
+       
+            <h1>Thank you so much!</h1>
+     
     </section>
+    <% } %>
 
     <section id="services">
         <h2>Services</h2>
@@ -55,25 +46,9 @@
         </div>
     </section>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form id="contact-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+    
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 FitLife Gym. All rights reserved.</p>
-    </footer>
+   
 
 
 </body>

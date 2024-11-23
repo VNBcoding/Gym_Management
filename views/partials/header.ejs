@@ -1,0 +1,25 @@
+<header>
+    <a href="/"><h1>Welcome to Ontario Tech Gym</h1></a>
+    <nav>
+        <ul>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/class">Class</a></li>
+            <li><a href="/membership">Membership</a></li>
+            <li><a href="/contactUs">Contact</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li>
+                <% if (user || 0) { %>
+                    Welcome, <%= user.user %>!
+                   <li><a href="/Logout">Logout</a></li> 
+                <% } else { %>
+                    <a href="/login">Login</a>
+                <% } %>
+
+            </li>
+        </ul>
+       
+       
+       
+        
+    </nav>
+</header>

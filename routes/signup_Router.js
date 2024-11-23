@@ -9,10 +9,11 @@ router.get("/signup", (req, res) => {
     res.render("signup.ejs");
 })
 router.post("/signup", async (req, res) => {
+
    try {
     const [duplicate] = await db.promise().query('SELECT * FROM users WHERE username = ?', [req.body.username])
     if(duplicate.length > 0){
-        res.render('signup.ejs');
+        res.render('signup.ejs',  { user: req.session.passport });
     }
     else{
         bcrypt.hash(req.body.password, saltRounds, async (err, hashpass) => {

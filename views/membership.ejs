@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Plans</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link your stylesheet here -->
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+<section class="membership-page">
+    <h1 class="title">Membership Plans</h1>
+    <p>Choose a membership plan that suits you the best!</p>
+
+    <div class="plans" >
+        <% plans.forEach(plan => { %>
+            <div class="plan" data-plan-name="<%= plan.plan_name %>">
+                <h2><%= plan.plan_name %></h2>
+                <p>Duration: <%= plan.duration %></p>
+                <p><strong>Price: $<%= plan.price %></strong></p>
+                <p>
+                    <%= plan.plan_name === "Weekly"
+                    ? "Great for trying out gym facilities without commitment"
+                    : plan.plan_name === "Monthly"
+                    ?"A perfect balance between flexibility and affordability"
+                    : "A great option for long-term commitment" 
+                    %>
+                </p>
+            </div>
+        <% }); %>
+    </div>
+
+    <div class="button-container">
+        <a href="/signup" class="button-container" >Sign Up Now</a>
+    </div>
+</section>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const plans = document.querySelectorAll('.plan');
+        console.log("Hello");
+
+        // Use `forEach` with a capital "E"
+        plans.forEach(plan => {
+            plan.addEventListener("click", () => {
+                // Access the inner text of the plan name
+                const planName = plan.getAttribute('data-plan-name');
+                window.location.href = `/membership/${planName}`;
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

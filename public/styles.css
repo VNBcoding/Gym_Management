@@ -8,7 +8,8 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background-color: white;
+
 }
 
 header {
@@ -35,7 +36,7 @@ nav ul li a {
 section {
     margin: 20px;
     padding: 20px;
-    background-color: #fff;
+    background-color: grey;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -78,4 +79,228 @@ form button {
 
 form button:hover {
     background-color: #555;
+}
+
+/* Membership Page Styles */
+.membership-page {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+.membership-page h1 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.membership-page p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #666;
+}
+
+/* Membership Plans */
+.plans {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.plan {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.plan h2 {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.plan p {
+    margin: 10px 0;
+    color: #666;
+    font-size: 1rem;
+}
+
+.plan strong {
+    color: #000;
+    font-size: 1.2rem;
+}
+
+/* Center the button */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.membership-page a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #800080;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.membership-page a:hover {
+    background-color: #f1bcf1;
+}
+
+/* Center the title */
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Contact Page Styles */
+.contact-page {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+.contact-page h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 2.5rem;
+}
+
+.contact-page p {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-form label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #333;
+    align-self: flex-start;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.contact-form button {
+    background-color: #800080; /* Purple color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #a64ca6; /* Lighter purple on hover */
+}
+
+/* Login Page Styles */
+.login-page {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+.login-page h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 2.5rem;
+}
+
+.login-page p {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #333;
+    align-self: flex-start;
+}
+
+.login-form input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.login-form button {
+    background-color: #800080; /* Purple color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #a64ca6; /* Lighter purple on hover */
+}
+
+.login-page a {
+    color: #800080;
+    text-decoration: none;
+}
+
+.login-page a:hover {
+    text-decoration: underline;
 }
