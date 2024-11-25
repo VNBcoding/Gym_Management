@@ -4,7 +4,6 @@ import session from "express-session"
 import passport from "./config/passport.js";
 //import routes from the route folder
 import homepage from "./routes/home_Router.js"
-import aboutpage from "./routes/about_Router.js"
 import classpage from "./routes/class_Router.js"
 import loginpage from "./routes/login_Router.js"
 import logoutpage from "./routes/logout_Router.js"
@@ -13,6 +12,8 @@ import membershippage from "./routes/membership_Router.js";
 import contactUspage from "./routes/contactUs_Router.js";
 import profilepage from "./routes/profile_Router.js";
 import paymentpage from "./routes/payment_Router.js";
+import pt_page from "./routes/personalTraining_Router.js";
+
 
 const app = express();
 const port = 3000;
@@ -47,7 +48,6 @@ app.use((req, res, next) => {
 
 
 app.use("/", homepage);
-app.use("/",aboutpage)
 app.use("/",classpage)
 app.use("/",loginpage)
 app.use("/",logoutpage)
@@ -56,6 +56,7 @@ app.use("/",membershippage);
 app.use("/",contactUspage);
 app.use("/",profilepage);
 app.use("/",paymentpage);
+app.use("/", pt_page);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

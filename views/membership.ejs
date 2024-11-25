@@ -5,50 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Membership Plans</title>
     <link rel="stylesheet" href="/styles.css"> <!-- Link your stylesheet here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #8E44AD;
+            padding: 15px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .membership-page {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .title {
+            font-size: 2.5em;
+            color: #8E44AD;
+            margin-bottom: 20px;
+        }
+
+        .plans {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .plan {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .plan:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan h2 {
+            font-size: 1.8em;
+            color: #8E44AD;
+            margin-bottom: 15px;
+        }
+
+        .plan p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .plan strong {
+            font-size: 1.3em;
+            color: #2C3E50;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            background-color: #8E44AD;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 50px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-container a:hover {
+            background-color: #732D91;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .plans {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .plan {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <%- include('partials/header.ejs') %>
-<section class="membership-page">
-    <h1 class="title">Membership Plans</h1>
-    <p>Choose a membership plan that suits you the best!</p>
 
-    <div class="plans" >
-        <% plans.forEach(plan => { %>
-            <div class="plan" data-plan-name="<%= plan.plan_name %>">
-                <h2><%= plan.plan_name %></h2>
-                <p>Duration: <%= plan.duration %></p>
-                <p><strong>Price: $<%= plan.price %></strong></p>
-                <p>
-                    <%= plan.plan_name === "Weekly"
-                    ? "Great for trying out gym facilities without commitment"
-                    : plan.plan_name === "Monthly"
-                    ?"A perfect balance between flexibility and affordability"
-                    : "A great option for long-term commitment" 
-                    %>
-                </p>
-            </div>
-        <% }); %>
-    </div>
+    <section class="membership-page">
+        <h1 class="title">Membership Plans</h1>
+        <p>Choose a membership plan that suits you the best!</p>
 
-    <div class="button-container">
-        <a href="/signup" class="button-container" >Sign Up Now</a>
-    </div>
-</section>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const plans = document.querySelectorAll('.plan');
-        console.log("Hello");
+        <div class="plans">
+            <% plans.forEach(plan => { %>
+                <div class="plan" data-plan-name="<%= plan.plan_name %>">
+                    <h2><%= plan.plan_name %></h2>
+                    <p>Duration: <%= plan.duration %></p>
+                    <p><strong>Price: $<%= plan.price %></strong></p>
+                    <p>
+                        <%= plan.plan_name === "Weekly"
+                        ? "Great for trying out gym facilities without commitment"
+                        : plan.plan_name === "Monthly"
+                        ?"A perfect balance between flexibility and affordability"
+                        : "A great option for long-term commitment" 
+                        %>
+                    </p>
+                </div>
+            <% }); %>
+        </div>
 
-        // Use `forEach` with a capital "E"
-        plans.forEach(plan => {
-            plan.addEventListener("click", () => {
-                // Access the inner text of the plan name
-                const planName = plan.getAttribute('data-plan-name');
-                window.location.href = `/membership/${planName}`;
+        <div class="button-container">
+            <a href="/signup" class="button-container">Sign Up Now</a>
+        </div>
+    </section>
+    <%- include('partials/footer') %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const plans = document.querySelectorAll('.plan');
+            plans.forEach(plan => {
+                plan.addEventListener("click", () => {
+                    // Access the inner text of the plan name
+                    const planName = plan.getAttribute('data-plan-name');
+                    window.location.href = `/membership/${planName}`;
+                });
             });
         });
-    });
-</script>
-
+    </script>
 </body>
 </html>

@@ -5,51 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gym Management</title>
     <link rel="stylesheet" href="/styles.css"> 
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+
+    
 
 </head>
 <body>
-    
+    <% // <a href="/login" class="button">Login</a>%>
     <%- include('partials/header') %>
-    <% if (success) { %>
-    <section id="about">
-       
-            <h1>Thank you so much!</h1>
-     
-    </section>
-    <% } %>
-
-    <section id="services">
-        <h2>Services</h2>
-        <div class="service">
-            <h3>Personal Training</h3>
-            <p>Our certified trainers are here to guide you every step of the way.</p>
-        </div>
-        <div class="service">
-            <h3>Group Classes</h3>
-            <p>Join our group fitness classes, including yoga, spinning, and more.</p>
-        </div>
-        <div class="service">
-            <h3>Nutrition Plans</h3>
-            <p>Custom nutrition plans designed to complement your workouts.</p>
-        </div>
-    </section>
-
-    <section id="membership">
-        <h2>Membership Plans</h2>
-        <div class="membership-plan">
-            <h3>Basic Plan</h3>
-            <p>Access to gym equipment and group classes for $30/month.</p>
-        </div>
-        <div class="membership-plan">
-            <h3>Premium Plan</h3>
-            <p>Includes personal training sessions and nutrition plans for $50/month.</p>
-        </div>
-    </section>
-
     
-
+    <% if (success) { %>
    
-
-
+    <% } %>
+    <div style="margin-top: 20px;"">
+        <img src="/image/gold.jpg" alt="Big Banner" style="width: 100%; height: auto; margin-top: -32px; object-fit: cover;">
+        <div style="position: absolute; top: 38%; left: 50%; transform: translateX(-50%); color: white; font-family: 'Roboto', sans-serif; font-size: 48px; font-weight: bold; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);margin-bottom: 20px;">
+            &ldquo;Your Journey to a Better You Starts.&rdquo;
+        </div>
+        
+    <div style="margin-top: 20px;" >
+        <a href="/signup" style="position: absolute; top: 47%; left: 50%; transform: translateX(-50%) translateY(20px); padding: 12px 30px; background-color: #3498db; color: white; text-decoration: none; border-radius: 8px; font-family: 'Roboto', sans-serif; font-size: 20px; font-weight: bold; text-align: center; cursor: pointer; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: background-color 0.3s;"
+            onmouseover="this.style.backgroundColor='#2980b9';"
+            onmouseout="this.style.backgroundColor='#3498db';">
+            Sign Up Now
+        </a>
+    </div>
+    </div>
+    <section id="services" style="text-align: center; background-color: #f2f2f2; padding: 40px 0;">
+        <h1>Services</h1>
+        <div style="display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 0 10px;">
+      
+            <div class="service" style="width: 32%; background-color: white; border: 1px solid #ccc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Personal Training</h3>
+                <p style="margin-bottom: 20px;">Work with certified trainers to achieve your fitness goals with personalized guidance and support.</p>
+            
+                <a href="/personalTraining" style="display: inline-block; padding: 10px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background-color 0.3s;">
+                    Learn More
+                </a>
+            </div>
+    
+            <div class="service" style="width: 32%; background-color: white; border: 1px solid #ccc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Group Classes</h3>
+                <p style="margin-bottom: 20px;">Join our fun and motivating group fitness classes, including yoga, spinning, and more.</p>
+                
+                <a href="/class" style="display: inline-block; padding: 10px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background-color 0.3s;">
+                    Learn More
+                </a>
+            </div>
+    
+            <!-- Membership Section -->
+            <div class="service" style="width: 32%; background-color: white; border: 1px solid #ccc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                <h3>Membership</h3>
+                <p style="margin-bottom: 20px;">Select from flexible membership plans that give you access to gym facilities, group classes, and exclusive services.</p>
+                
+                <a href="/membership" style="display: inline-block; padding: 10px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background-color 0.3s;">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    
+   
+    <%- include('partials/footer') %>
 </body>
 </html>

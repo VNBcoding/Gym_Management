@@ -3,13 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css"> <!-- Link your stylesheet here -->
-    <title>Header with Username</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link your stylesheet -->
+    <title>User Profile</title>
+    <style>
+        /* General body styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        /* Profile container */
+        .profile-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Profile title */
+        .profile-title {
+            text-align: center;
+            color: #4A148C;
+            margin-bottom: 20px;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        /* Profile card section */
+        .profile-card {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f3e5f5;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-card h2 {
+            margin-bottom: 20px;
+            color: #6A1B9A;
+            text-align: center;
+        }
+
+        /* Information row styles */
+        .info-row {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .info-row span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Error message styles */
+        .error-message {
+            text-align: center;
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Login link for errors */
+        .error-message a {
+            color: #4A148C;
+            text-decoration: underline;
+        }
+
+        .error-message a:hover {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
+    <!-- Include the header -->
+    <%- include('partials/header.ejs') %>
 
-       <%- include('partials/header.ejs') %>
-
-    
+    <div class="profile-container">
+        <% if (user) { %>
+            <h1 class="profile-title">Welcome, <%= user_row.username %>!</h1>
+            <section class="profile-card">
+                <h2>Profile Information</h2>
+                <div class="info-row">
+                    <span>Username:</span> <%= user_row.username || 'N/A' %>
+                </div>
+                <div class="info-row">
+                    <span>Membership Plan:</span> <%= user_row.plan || 'No Membership' %>
+                </div>
+                <div class="info-row">
+                    <span>Start Date:</span> <%= user_row.startDate || 'N/A' %>
+                </div>
+                <div class="info-row">
+                    <span>End Date:</span> <%= user_row.endDate || 'N/A' %>
+                </div>
+            </section>
+        <% } else { %>
+            <div class="error-message">
+                <h2>Error: User data not available</h2>
+                <p>Please <a href="/login">login</a> to access your profile.</p>
+            </div>
+        <% } %>
+        </div>
+    <%- include('partials/footer') %>
 </body>
 </html>

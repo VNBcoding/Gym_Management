@@ -1,22 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Signup</title>
     <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #8E44AD;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .signup-form {
+            width: 100%;
+            max-width: 400px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .signup-form label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .signup-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .signup-form input:focus {
+            border-color: #8E44AD;
+        }
+
+        .submit-btn {
+            padding: 12px;
+            width: 100%;
+            background-color: #8E44AD;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #732D91;
+        }
+
+        .signup-page {
+            text-align: center;
+        }
+
+        .signup-page p {
+            margin-top: 15px;
+            color: #555;
+        }
+
+        .signup-page p a {
+            color: #8E44AD;
+            text-decoration: none;
+        }
+
+        .signup-page p a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .signup-form {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .signup-form input {
+                font-size: 14px;
+            }
+
+            .submit-btn {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
+
 <body>
     <%- include('partials/header.ejs') %>
-    <h1 id = 'title'>This is my signup page</h1>
-    <form action="/signup" method="post">
-        <label for="email"> Usernane :</label>
-            <input type="text" id="email" name="username" value="">
-        
-        <label for="pass"> password: </label>
-            <input type="password" name="password" >
-       
-        <button type="submit" >Submit</button>
-    </form>
+
+    <div class="signup-page">
+        <H1 style="padding: 10px;">Account Registration</H1>
+        <form action="/signup" method="post" class="signup-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+
+        <p>Already have an account? <a href="/login">Login here</a>.</p>
+    </div>
+    <%- include('partials/footer') %>
 </body>
+
 </html>

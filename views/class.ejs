@@ -6,45 +6,165 @@
     <title>Class Schedule</title>
     <link rel="stylesheet" href="/styles.css"> 
     <style>
-        class-container {
-            display: flex;
-            /* flex-direction: column; */
-            gap: 20px; /* Space between each class box */
+        /* Body & Layout Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
         }
 
-        /* Styling for individual class boxes */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        /* Class Schedule Styling */
+        .class-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: space-between;
+        }
+
         .class-box {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            justify-content: space-between;
             padding: 15px;
-            border: 1px solid #ddd;
+            background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            gap: 20px; 
+            width: calc(33% - 20px);
+            transition: transform 0.2s ease-in-out;
         }
-        
 
-        /* Styling for the class image */
+        .class-box:hover {
+            transform: translateY(-5px);
+        }
+
         .class-image {
-            width: 400px;
-            height: 200px;
+            width: 100%;
+            height: 150px;
             background-size: cover;
             background-position: center;
             border-radius: 8px;
-            margin-right: 15%;
         }
 
-        /* Styling for the class details */
         .class-details {
-            flex-grow: 1;
-        }   
+            margin-top: 15px;
+        }
+
+        .class-details h3 {
+            font-size: 1.4rem;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .class-details p {
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+
+        .class-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn-add {
+            background-color: #28a745;
+        }
+
+        .btn-drop {
+            background-color: #dc3545;
+        }
+
+        .btn-add:hover {
+            background-color: #218838;
+        }
+
+        .btn-drop:hover {
+            background-color: #c82333;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Margin for Heading */
+        h1 {
+            margin: 30px 0 20px;
+            font-size: 2rem;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
-    <%- include('partials/header.ejs') %>
+    <%- include('partials/header') %>
 
+    <!-- Display message if present -->
+    <div>
+        <% if (message) { %>
+            <div class="message <%= messageType %>">
+                <p><%= message %></p>
+            </div>
+        <% } %>
+    </div>
+
+    <!-- Class Schedule Heading -->
     <h1>Class Schedule</h1>
 
+    <!-- Class Schedule Grid -->
     <div class="class-container">
         <% if (classes.length > 0) { %>
             <% classes.forEach((classItem) => { %>
@@ -52,20 +172,29 @@
                     <div class="class-image" style="background-image: url('<%= classItem.class_img %>');"></div>
                     <div class="class-details">
                         <h3><%= classItem.class_name %></h3>
+                        <p><%= classItem.trainer_name %></p> 
                         <p>From: <%= classItem.s_time %></p>
                         <p>End: <%= classItem.e_time %></p>
                         <p>Location: <%= classItem.location %></p>
                         <p>Available Seats: <%= classItem.seats %></p>
                     </div>
-                   
+
+                    <div class="class-actions">
+                        <form action="/class/add" method="POST">
+                            <input type="hidden" name="c_ID" value="<%= classItem.c_ID %>">
+                            <button type="submit" class="btn btn-add">Add Class</button>
+                        </form>
+                        <form action="/class/drop" method="POST">
+                            <input type="hidden" name="c_ID" value="<%= classItem.c_ID %>">
+                            <button type="submit" class="btn btn-drop">Drop Class</button>
+                        </form>
+                    </div>
                 </div>
             <% }); %>
         <% } else { %>
             <p>No classes available.</p>
         <% } %>
-    
     </div>
- 
-    
+    <%- include('partials/footer') %>
 </body>
 </html>

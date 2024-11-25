@@ -17,10 +17,15 @@ router.get("/membership", async (req, res) => {
 
 router.get('/membership/:planName', async (req, res) => {
     try {
-        const planname = req.params.planName;
-        const [plan] = await db.promise().query("SELECT * FROM plan WHERE plan_name = ? ", [planname]);
-        res.render("payment.ejs", { plan : plan[0] , user: req.session.passport} );
-        console.log(plan);
+        if(req.session.passport && req.session){
+            const planname = req.params.planName;
+            const [plan] = await db.promise().query("SELECT * FROM plan WHERE plan_name = ? ", [planname]);
+            res.render("payment.ejs", { plan : plan[0] , user: req.session.passport} );
+            console.log(plan);
+        }
+        else{
+            res.redirect("/login");
+        }
     }
     catch (err) {
         console.error("Error fetching membership plans:", err);

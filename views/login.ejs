@@ -1,13 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS -->
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+        }
+
+
+        .login-page {
+            width: 100%;
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .login-page h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .login-page p {
+            text-align: center;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-form label {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .login-form input {
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .login-form input:focus {
+            border-color: #8E44AD;
+        }
+
+        .submit-btn {
+            padding: 12px;
+            background-color: #8E44AD;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #732D91;
+        }
+
+        .login-page p a {
+            color: #8E44AD;
+            text-decoration: none;
+        }
+
+        .login-page p a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .login-page {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .login-page h1 {
+                font-size: 24px;
+            }
+
+            .login-form input {
+                font-size: 14px;
+            }
+
+            .submit-btn {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
+
 <body>
+
     <%- include('partials/header.ejs') %>
+   
 
     <section class="login-page">
         <h1>Login</h1>
@@ -25,5 +129,7 @@
 
         <p>Don't have an account? <a href="/signup">Sign up here</a>.</p>
     </section>
+     <%- include('partials/footer') %>
 </body>
+
 </html>
