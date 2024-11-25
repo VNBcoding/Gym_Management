@@ -1,37 +1,46 @@
-Gym Management System
-Overview
+
+# Gym Management System
+
+## Overview
 This Gym Management System is a web-based application designed to for users to access the services we offer and manage there gym account with us. They will be able to create an account and sign up for a memebership, classes, and a personal trainer.
 
 
-Installation
-Prerequisites
-Node.js (v14 or later)
-npm (Node Package Manager)
+## Installation
 
-Steps
-Download and Unzip the folder from the GitHub repository
+### Prerequisites
+- Node.js (v14 or later)
+- npm (Node Package Manager)
 
-Navigate to the project directory:
-cd gym-management
+### Steps
+1. Download and Unzip the folder from the GitHub repository
 
-Install dependencies:
-npm install
+2. Navigate to the project directory:
+   ```bash
+   cd gym-management
+   ```
 
-Link the database in the db.js file
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Start the server:
-node server.js
+4. Link the database in the `db.js` file
 
-Open your browser and navigate to http://localhost:3000.
+5. Start the server:
+   ```bash
+   node server.js
+   ```
 
-Usage
-Register as a new user or log in with your credentials.
-Access various features such as member management, workout plans, and schedules.
+5. Open your browser and navigate to `http://localhost:3000`.
 
-Technologies Used
-Backend: Node.js, Express.js
-Frontend: HTML, CSS, JavaScript
-Database: MySQL
+## Usage
+1. Register as a new user or log in with your credentials.
+2. Access various features such as member management, workout plans, and schedules.
+
+## Technologies Used
+- **Backend**: Node.js, Express.js
+- **Frontend**: HTML, CSS, JavaScript
+- **Database**: MySQL
 
 ---
 Enjoy using the Gym Management System!
